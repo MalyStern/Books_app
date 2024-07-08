@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import '../models/model.dart';
 
-class RegisterPage extends StatefulWidget{
+class RegisterPage extends StatefulWidget {
   final VoidCallback toggleDarkMode;
   final bool isDarkMode;
 
@@ -12,7 +12,7 @@ class RegisterPage extends StatefulWidget{
   _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage>{
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -35,17 +35,17 @@ class _RegisterPageState extends State<RegisterPage>{
               SizedBox(height: 10),
               _buildTextField(emailController, "Email"),
               SizedBox(height: 10),
-              _buildTextField(passwordController, "Password", obscureText: true),
+              _buildTextField(passwordController, "Password",
+                  obscureText: true),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: (){
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => IntroScreen(
-                        toggleDarkMode: widget.toggleDarkMode,
-                        isDarkMode: widget.isDarkMode
-                      ),
+                          toggleDarkMode: widget.toggleDarkMode,
+                          isDarkMode: widget.isDarkMode),
                     ),
                   );
                 },
@@ -58,7 +58,8 @@ class _RegisterPageState extends State<RegisterPage>{
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String labelText, {bool obscureText = false}){
+  Widget _buildTextField(TextEditingController controller, String labelText,
+      {bool obscureText = false}) {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
@@ -71,10 +72,10 @@ class _RegisterPageState extends State<RegisterPage>{
     );
   }
 
-  Widget _buildBooksCarousel(){
+  Widget _buildBooksCarousel() {
     return CarouselSlider.builder(
       itemCount: books.length,
-      itemBuilder: (context, index, child){
+      itemBuilder: (context, index, child) {
         final book = books[index];
         return _buildbookItem(book);
       },
@@ -87,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage>{
     );
   }
 
-  Widget _buildbookItem(Book book){
+  Widget _buildbookItem(Book book) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
@@ -98,5 +99,4 @@ class _RegisterPageState extends State<RegisterPage>{
       ),
     );
   }
-
 }
